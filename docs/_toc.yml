@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: connect_to_klc
+- file: common_linux_commands
+- file: directory
+- file: file_transfer
+- file: run_jobs
+- file: proj_sec10k
+- file: proj_tweets
