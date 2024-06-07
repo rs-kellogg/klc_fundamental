@@ -27,6 +27,10 @@ def clean_html(html):
     cleaned = re.sub(r"&nbsp;", " ", cleaned)
     cleaned = re.sub(r"  ", " ", cleaned)
     cleaned = re.sub(r"  ", " ", cleaned)
+
+    # Remove lines with only whitespaces
+    # cleaned = re.sub(r"\n\s*\n", "\n", cleaned)
+
     return cleaned.strip()
 
 
@@ -66,17 +70,17 @@ def main(
     list_mda_text = []
     for f in files:
         print(f"loading: {f.name}")
-        list_files.append(f.name)
 
-        mda_text = extract_mda(clean_html(f.read_text()))
+        clean_text = clean_html(f.read_text())
+        with open(f.stem + "_cleaned.txt", "w") as f_out:
+            f_out.write(clean_text)
+
+        mda_text = extract_mda(clean_text)
         if mda_text is None:
             continue
-        list_mda_text.append(mda_text)
 
-    # print(data_dict)
-    for file, text in zip(list_files, list_mda_text):
-        print(f"== Filename: {file}")
-        print(f"== MDA text: {text}")
+        list_files.append(f.name)
+        list_mda_text.append(mda_text)
 
     df = pd.DataFrame({'filename': list_files, 'mda_text': list_mda_text})
     df.to_csv(output_file, index=False)
