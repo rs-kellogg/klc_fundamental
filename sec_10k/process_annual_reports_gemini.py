@@ -47,9 +47,10 @@ def extract_mda(text):
 
 # ------------------------------------------------------------------------------
 def main(
-    input_dir: Path = Path("/kellogg/data/EDGAR/10-K/2023"),
+    # input_dir: Path = Path("/kellogg/data/EDGAR/10-K/2023"),
+    input_dir: Path = Path("/kellogg/proj/plu781/project_consult/workshop_2024summer/klc_fundamental/sec_10k/forms_10-K"),
     output_file: Path = Path("/kellogg/proj/plu781/project_consult/workshop_2024summer/klc_fundamental/sec_10k/annual_report_output.csv"),
-    num_files: int = 10,
+    num_files: int = 5,
 ):
     # validate input parameters
     assert input_dir.exists() and input_dir.is_dir()
@@ -61,46 +62,28 @@ def main(
     files.sort()
 
     # load and clean text, extr
-    data_dict = {"doc": [], "text": []}
+    list_files = []
+    list_mda_text = []
     for f in files:
         print(f"loading: {f.name}")
+        list_files.append(f.name)
+
         mda_text = extract_mda(clean_html(f.read_text()))
         if mda_text is None:
             continue
-        data_dict["doc"].append(f.name)
-        data_dict["text"].append(mda_text)
+        list_mda_text.append(mda_text)
 
     # print(data_dict)
-    for key, value in data_dict.items():
-        print(f"== key: {key}")
-        print(f"== value: {value}")
+    for file, text in zip(list_files, list_mda_text):
+        print(f"== Filename: {file}")
+        print(f"== MDA text: {text}")
 
-    # # create a dataset object
-    # dataset_10k = Dataset.from_dict(data_dict)
-    # print(f"created dataset: {dataset_10k}")
-
-    # # apply summarization pipeline to dataset
-    # summarizer = pipeline("summarization", model=model_checkpoint)
-    # dataset_10k = dataset_10k.map(
-    #     lambda batch: {
-    #         "summary": summarizer(
-    #             batch["text"],
-    #             max_length=50,
-    #             min_length=30,
-    #             do_sample=False,
-    #             truncation=True,
-    #         )
-    #     },
-    #     batched=True,
-    # )
-
-    # # output to file
-    # dataset_10k.to_csv(output_file)
+    df = pd.DataFrame({'filename': list_files, 'mda_text': list_mda_text})
+    df.to_csv(output_file, index=False)
 
 
 # ------------------------------------------------------------------------------
 # Entry point
 # ------------------------------------------------------------------------------
 if __name__ == "__main__":
-    # print(f"Using CUDA: {torch.cuda.is_available()}")
     main()
