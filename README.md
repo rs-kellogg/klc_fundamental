@@ -1,4 +1,4 @@
-# Sample script for classifying tweets with Gemini-Pro model
+# Instructions 
 
 ## Get an API Key
 Retrieve one for free here: https://aistudio.google.com/app/apikey
