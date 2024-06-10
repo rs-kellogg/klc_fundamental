@@ -368,6 +368,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-directory">Working with directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">Working with files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-direcotry-size">Check direcotry size</a></li>
@@ -385,15 +386,32 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="common-linux-commands">
 <h1>Common Linux Commands<a class="headerlink" href="#common-linux-commands" title="Permalink to this heading">#</a></h1>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>exit: quit the current shell (terminal)</p></li>
+<li><p>“tab”: auto-completes program and file names</p></li>
+<li><p>“up”: goes through your command history</p></li>
+<li><p>“ctrl”+”c”: interrupts the current command</p></li>
+<li><p>~: refers to your home directory</p></li>
+<li><p>*: is used to match multiple files</p></li>
+<li><p>man [program]: show documentation for a program</p></li>
+</ul>
+</section>
 <section id="working-with-directory">
 <h2>Working with directory<a class="headerlink" href="#working-with-directory" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span><span class="p">,</span> <span class="n">cd</span><span class="p">,</span> <span class="n">pwd</span><span class="p">,</span> <span class="n">mkdir</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
+<span class="n">cd</span> <span class="n">directory_name</span>
+<span class="n">pwd</span> 
+<span class="n">mkdir</span> <span class="n">new_directory_name</span>
 </pre></div>
 </div>
 </section>
 <section id="working-with-files">
 <h2>Working with files<a class="headerlink" href="#working-with-files" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span><span class="p">,</span> <span class="n">mv</span><span class="p">,</span> <span class="n">rm</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">original_file</span> <span class="n">destination_file</span>
+<span class="n">mv</span> <span class="n">original_file</span> <span class="n">destination_file</span>
+<span class="n">rm</span> <span class="n">file_name</span>
 </pre></div>
 </div>
 </section>
@@ -405,7 +423,11 @@ document.write(`
 </section>
 <section id="common-editor">
 <h2>Common Editor<a class="headerlink" href="#common-editor" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span><span class="p">,</span> <span class="n">vi</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># basic editor</span>
+<span class="n">nano</span> <span class="n">file_name</span>
+<span class="c1"># more complicated/powerful editors</span>
+<span class="n">vi</span> <span class="n">file_name</span>
+<span class="n">emac</span> <span class="n">file_name</span>
 </pre></div>
 </div>
 </section>
@@ -474,6 +496,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-directory">Working with directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">Working with files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-direcotry-size">Check direcotry size</a></li>

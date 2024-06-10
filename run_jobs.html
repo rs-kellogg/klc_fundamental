@@ -390,7 +390,20 @@ document.write(`
 <h1>Running Jobs<a class="headerlink" href="#running-jobs" title="Permalink to this heading">#</a></h1>
 <section id="use-existing-moddules">
 <h2>Use existing moddules<a class="headerlink" href="#use-existing-moddules" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">avail</span><span class="p">,</span> <span class="n">module</span> <span class="nb">list</span><span class="p">,</span> <span class="n">module</span> <span class="n">load</span><span class="p">,</span> <span class="n">module</span> <span class="n">purge</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># list available modules</span>
+<span class="n">module</span> <span class="n">avail</span> <span class="p">[</span><span class="n">optional_program_name</span><span class="p">]</span>
+<span class="c1"># list loaded module</span>
+<span class="n">module</span> <span class="nb">list</span>
+<span class="c1"># unload a module</span>
+<span class="n">module</span> <span class="n">rm</span> <span class="p">[</span><span class="n">module</span><span class="p">]</span>
+<span class="c1"># unload all loaded modules</span>
+<span class="n">module</span> <span class="n">purge</span>
+
+<span class="c1"># load specific modules</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">R</span><span class="p">;</span> <span class="n">R</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">stata</span><span class="p">;</span> <span class="n">stata</span><span class="o">-</span><span class="n">mp</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">sas</span><span class="p">;</span> <span class="n">sas</span> <span class="o">-</span><span class="n">memsize</span> <span class="mi">0</span> <span class="o">-</span><span class="n">sortsize</span> <span class="mi">0</span> <span class="o">-</span><span class="n">maxmemquery</span> <span class="mi">0</span> <span class="o">-</span><span class="n">work</span> <span class="o">/</span><span class="n">kellogg</span><span class="o">/</span><span class="n">tmp</span> <span class="p">[</span><span class="n">program</span><span class="o">.</span><span class="n">sas</span><span class="p">]</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">matlab</span><span class="o">/</span><span class="n">r2016a</span><span class="p">;</span> <span class="n">matlab</span>
 </pre></div>
 </div>
 </section>
@@ -418,7 +431,7 @@ document.write(`
 <h3>FastX<a class="headerlink" href="#fastx" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>FastX will continue to run your jobs even after your close your browser window and reboot your computer.</p></li>
-<li><p>Your connections will remain active until you explicitly Terminate the FastX session.</p></li>
+<li><p>Your connections will remain active until you <strong>explicitly terminate</strong> the FastX session.</p></li>
 <li><p>Please take care to terminate sessions after your work is complete.</p></li>
 </ul>
 </section>
