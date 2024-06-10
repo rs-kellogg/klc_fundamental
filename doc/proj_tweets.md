@@ -20,4 +20,4 @@ python classify_company_tweets.py
 ```
 
 ## Add logging to the python script
-Follow directions in lines 33-34, write tweet_id, tweet, sentiment, llm, processed_date information to an output file
+Follow lines 33-34 in classify_company_tweets.py, write a .csv table with columns "tweet_id, tweet, sentiment, llm, processed_date" to an output file
