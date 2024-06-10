@@ -64,7 +64,7 @@ def main(
     files = list(input_dir.glob("*.txt"))[:num_files]
     files.sort()
 
-    # load and clean text, extr
+    # load and clean text
     list_files = []
     list_mda_text = []
     for f in files:
