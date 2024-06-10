@@ -1,4 +1,4 @@
-# Project: Processing SEC 10-K Forms with Gemini-Pro model
+# Project: Clean Up SEC 10-K Forms 
 
 ## Download this repo
 ```
