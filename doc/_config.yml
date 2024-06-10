@@ -22,7 +22,7 @@ latex:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/rs-kellogg/klc-fundamental-cookbook
-  path_to_book: docs
+  path_to_book: doc
   branch: master
 
 # Add GitHub buttons to your book
