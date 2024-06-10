@@ -1,4 +1,4 @@
-# Project: Classifying Tweets with Gemini-Pro model
+# Project: Classify Tweets with Gemini-Pro Model
 
 ## Follow the instructions for processing SEC 10-K forms project to set up Conda environment
 
