@@ -15,7 +15,7 @@ genai.configure(api_key=api_key)
 gemini_model = "gemini-pro"
 model=genai.GenerativeModel(gemini_model)
 
-# function to get response
+# Function to get response
 def get_gemini_response(prompt):
     response = model.generate_content(prompt)
     return response.text
@@ -30,7 +30,7 @@ def classify_tweets(df, output_file):
         print(output)
         time.sleep(5)
 
-        # add logging information to the output file
+        # Add logging information to the output file
         # tweet_id, tweet, sentiment, llm, processed_date
 
 

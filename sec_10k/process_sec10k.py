@@ -25,11 +25,10 @@ def clean_html(html):
 
     # Finally, we deal with whitespace
     cleaned = re.sub(r"&nbsp;", " ", cleaned)
-    cleaned = re.sub(r"  ", " ", cleaned)
-    cleaned = re.sub(r"  ", " ", cleaned)
+    cleaned = re.sub(r" {2,}", " ", cleaned)
 
     # Remove lines with only whitespaces
-    # cleaned = re.sub(r"\n\s*\n", "\n", cleaned)
+    cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
 
     return cleaned.strip()
 
@@ -52,8 +51,8 @@ def extract_mda(text):
 # ------------------------------------------------------------------------------
 def main(
     # input_dir: Path = Path("/kellogg/data/EDGAR/10-K/2023"),
-    input_dir: Path = Path("/kellogg/proj/plu781/project_consult/workshop_2024summer/klc_fundamental/sec_10k/forms_10-K"),
-    output_file: Path = Path("/kellogg/proj/plu781/project_consult/workshop_2024summer/klc_fundamental/sec_10k/annual_report_output.csv"),
+    input_dir: Path = Path("./forms_10-K"),
+    output_file: Path = Path("./annual_report_output.csv"),
     num_files: int = 5,
 ):
     # validate input parameters
