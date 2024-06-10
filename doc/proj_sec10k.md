@@ -31,7 +31,7 @@ python proc_sec10k.py
 ## Modify script and check out output files
 - Check what regular expression in line 31 of proc_sec10k.py do
 ```
-cp  1716324_2_0001477932-23-002626_cleaned.txt.orig
+cp 1716324_2_0001477932-23-002626_cleaned.txt 1716324_2_0001477932-23-002626_cleaned.txt.orig
 ```
 Comment out line 31 of proc_sec10k.py by adding a "#" symbol, # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
 ```
