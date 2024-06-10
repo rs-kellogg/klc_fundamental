@@ -1,4 +1,4 @@
-# Common Linux Commands
+# Common git Commands
 
 ## Track your code edits with git
 - Basic git commands as you update your script
