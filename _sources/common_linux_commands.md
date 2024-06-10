@@ -1,9 +1,9 @@
 # Common Linux Commands
 ## Basics
 - exit: quit the current shell (terminal)
-- "tab": auto-completes program and file names
-- "up": goes through your command history
-- "ctrl"+"c": interrupts the current command
+- \<tab\>: auto-completes program and file names
+- \<up\>: goes through your command history
+- \<ctrl\>-\<c\>: interrupts the current command
 - ~: refers to your home directory
 - *: is used to match multiple files
 - man [program]: show documentation for a program
