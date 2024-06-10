@@ -6,6 +6,7 @@ root: intro
 chapters:
 - file: connect_to_klc
 - file: common_linux_commands
+- file: common_git_commands
 - file: directory
 - file: file_transfer
 - file: run_jobs

@@ -48,12 +48,15 @@ git log
 ```
 cp 1716324_2_0001477932-23-002626_cleaned.txt 1716324_2_0001477932-23-002626_cleaned.txt.orig
 ```
-Comment out line 31 of proc_sec10k.py by adding a "#" symbol, # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
+- Comment out line 31 of proc_sec10k.py by adding a "#" symbol, # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
 ```
 python proc_sec10k.py
 ```
-Use editor to open file to check
-Try the following commands
+- Use editor to open file to check
+```
+nano 1716324_2_0001477932-23-002626_cleaned.txt
+```
+- Try the following commands
 ```
 diff 1716324_2_0001477932-23-002626_cleaned.txt 1716324_2_0001477932-23-002626_cleaned.txt.orig
 wc -l 1716324_2_0001477932-23-002626_cleaned.txt*
