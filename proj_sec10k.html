@@ -345,7 +345,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -361,6 +363,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-this-repo">Download this repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-conda-environment-using-the-requirements-txt-file">Create a Conda environment using the requirements.txt file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-script">Run the script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-script-and-check-out-output-files">Modify script and check out output files</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -372,6 +385,56 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="project-processing-sec-10-k-forms-with-gemini-pro-model">
 <h1>Project: Processing SEC 10-K Forms with Gemini-Pro model<a class="headerlink" href="#project-processing-sec-10-k-forms-with-gemini-pro-model" title="Permalink to this heading">#</a></h1>
+<section id="download-this-repo">
+<h2>Download this repo<a class="headerlink" href="#download-this-repo" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rs</span><span class="o">-</span><span class="n">kellogg</span><span class="o">/</span><span class="n">klc_fundamental</span>
+<span class="n">cd</span> <span class="n">klc_fundamental</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-conda-environment-using-the-requirements-txt-file">
+<h2>Create a Conda environment using the requirements.txt file<a class="headerlink" href="#create-a-conda-environment-using-the-requirements-txt-file" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load miniconda module</span>
+<span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">-</span><span class="n">miniconda3</span><span class="o">/</span><span class="mf">4.12.0</span>
+<span class="n">module</span> <span class="nb">list</span>
+
+<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">p</span> <span class="n">gemini_chat_env</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.10</span>
+<span class="c1"># this will print out the current directory</span>
+<span class="n">pwd</span>
+<span class="c1"># copy the previous output and use as &quot;current_directory_output&quot; below</span>
+<span class="n">source</span> <span class="n">activate</span> <span class="n">current_directory_output</span><span class="o">/</span><span class="n">gemini_chat_env</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="run-the-script">
+<h2>Run the script<a class="headerlink" href="#run-the-script" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sec_10k</span>
+<span class="c1"># Run the python script</span>
+<span class="n">python</span> <span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</section>
+<section id="modify-script-and-check-out-output-files">
+<h2>Modify script and check out output files<a class="headerlink" href="#modify-script-and-check-out-output-files" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Check what regular expression in line 31 of proc_sec10k.py do</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span>
+</pre></div>
+</div>
+<p>Comment out line 31 of proc_sec10k.py by adding a “#” symbol, # cleaned = re.sub(r”\n\s{1,}\n”, “\n”, cleaned)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Use editor to open file to check
+Try the following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span>
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">*</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -428,6 +491,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-this-repo">Download this repo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-conda-environment-using-the-requirements-txt-file">Create a Conda environment using the requirements.txt file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-script">Run the script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-script-and-check-out-output-files">Modify script and check out output files</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

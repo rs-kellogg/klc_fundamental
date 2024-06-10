@@ -344,7 +344,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,6 +362,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-conda-environment">Follow the instructions for processing SEC 10-K forms project to set up Conda environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-an-api-key-and-set-it-up-in-a-env-file">Get an API Key and set it up in a .env file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-python-script">Run the python script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-logging-to-the-python-script">Add logging to the python script</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -371,6 +385,33 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="project-classifying-tweets-with-gemini-pro-model">
 <h1>Project: Classifying Tweets with Gemini-Pro model<a class="headerlink" href="#project-classifying-tweets-with-gemini-pro-model" title="Permalink to this heading">#</a></h1>
+<section id="follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-conda-environment">
+<h2>Follow the instructions for processing SEC 10-K forms project to set up Conda environment<a class="headerlink" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-conda-environment" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="get-an-api-key-and-set-it-up-in-a-env-file">
+<h2>Get an API Key and set it up in a .env file<a class="headerlink" href="#get-an-api-key-and-set-it-up-in-a-env-file" title="Permalink to this heading">#</a></h2>
+<p>Retrieve one for free here: <a class="reference external" href="https://aistudio.google.com/app/apikey">https://aistudio.google.com/app/apikey</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">klc_fundamental</span><span class="o">/</span><span class="n">tweets</span>
+<span class="c1"># Set up .env file, write the following line starting with &quot;GOOGLE_API_KEY&quot;</span>
+<span class="c1"># GOOGLE_API_KEY=api_key_from_https://aistudio.google.com/app/apikey</span>
+<span class="n">nano</span> <span class="o">.</span><span class="n">env</span>
+</pre></div>
+</div>
+</section>
+<section id="download-data">
+<h2>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h2>
+<p>Download and transfer data file: <a class="reference external" href="https://nuwildcat-my.sharepoint.com/:x:/g/personal/plu781_ads_northwestern_edu/ESBUwvqhMV9IlaZ_OOQH7HcB_bcaRtbfq0kIbmeFuNFoYA?e=pgfUdz">tweets_AAPL.csv</a> to the tweets/ folder</p>
+</section>
+<section id="run-the-python-script">
+<h2>Run the python script<a class="headerlink" href="#run-the-python-script" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">classify_company_tweets</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</section>
+<section id="add-logging-to-the-python-script">
+<h2>Add logging to the python script<a class="headerlink" href="#add-logging-to-the-python-script" title="Permalink to this heading">#</a></h2>
+<p>Follow directions in lines 33-34, write tweet_id, tweet, sentiment, llm, processed_date information to an output file</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -418,6 +459,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-conda-environment">Follow the instructions for processing SEC 10-K forms project to set up Conda environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-an-api-key-and-set-it-up-in-a-env-file">Get an API Key and set it up in a .env file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-python-script">Run the python script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-logging-to-the-python-script">Add logging to the python script</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
