@@ -28,6 +28,21 @@ cd sec_10k
 python proc_sec10k.py
 ```
 
+## Track your code edits with git
+- Basic git commands as you update your script
+```
+# Add new file for git tracking
+git add new file
+# Adds all changes to existing files to the Staging Area
+git add -u
+# Commit changes to repo
+git commit -m "message"
+# Check current status
+git status
+# Check log of commit
+git log
+```
+
 ## Modify script and check out output files
 - Check what regular expression in line 31 of proc_sec10k.py do
 ```
@@ -42,18 +57,4 @@ Try the following commands
 ```
 diff 1716324_2_0001477932-23-002626_cleaned.txt 1716324_2_0001477932-23-002626_cleaned.txt.orig
 wc -l 1716324_2_0001477932-23-002626_cleaned.txt*
-```
-
-- Basic git commands as you update your script
-```
-# Add new file for git tracking
-git add new file
-# Adds all changes to existing files to the Staging Area
-git add -u
-# Commit changes to repo
-git commit -m "message"
-# Check current status
-git status
-# Check log of commit
-git log
 ```
