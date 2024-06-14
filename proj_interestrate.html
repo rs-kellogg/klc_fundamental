@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Connect to KLC &#8212; Kellogg Linux Cluster (KLC) Fundamentals Cookbook</title>
+    <title>Project: Process Interest Rate Files &#8212; Kellogg Linux Cluster (KLC) Fundamentals Cookbook</title>
   
   
   
@@ -62,11 +62,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'connect_to_klc';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'proj_interestrate';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Common Linux Commands" href="common_linux_commands.html" />
-    <link rel="prev" title="Introduction to KLC" href="intro.html" />
+    <link rel="prev" title="Project: Clean Up SEC 10-K Forms" href="proj_sec10k.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,14 +167,14 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Connect to KLC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="connect_to_klc.html">Connect to KLC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="common_linux_commands.html">Common Linux Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="common_git_commands.html">Use git on KLC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="directory.html">Manage KLC Directory</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_transfer.html">Transfer Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_jobs.html">Running Jobs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="proj_sec10k.html">Project: Clean Up SEC 10-K Forms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="proj_interestrate.html">Project: Process Interest Rate Files</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project: Process Interest Rate Files</a></li>
 </ul>
 
     </div>
@@ -247,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/rs-kellogg/klc-fundamental-cookbook/issues/new?title=Issue%20on%20page%20%2Fconnect_to_klc.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/rs-kellogg/klc-fundamental-cookbook/issues/new?title=Issue%20on%20page%20%2Fproj_interestrate.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/connect_to_klc.md" target="_blank"
+      <li><a href="_sources/proj_interestrate.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -359,7 +358,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Connect to KLC</h1>
+    <h1>Project: Process Interest Rate Files</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -369,9 +368,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-address-for-klc-nodes">SSH address for KLC nodes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac">Mac</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-mamba-environment">Follow the <span class="xref myst">instructions for processing SEC 10-K forms project</span> to set up Mamba environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-python-script">Run the python script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-r-script">Run the R script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-stata-script">Run the Stata script</a></li>
 </ul>
             </nav>
         </div>
@@ -383,42 +384,51 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="connect-to-klc">
-<h1>Connect to KLC<a class="headerlink" href="#connect-to-klc" title="Permalink to this heading">#</a></h1>
-<section id="ssh-address-for-klc-nodes">
-<h2>SSH address for KLC nodes<a class="headerlink" href="#ssh-address-for-klc-nodes" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">klc0301</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0302</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0303</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0304</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0305</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0306</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0307</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0201</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0202</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-<span class="n">klc0203</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="project-process-interest-rate-files">
+<h1>Project: Process Interest Rate Files<a class="headerlink" href="#project-process-interest-rate-files" title="Permalink to this heading">#</a></h1>
+<section id="project-description">
+<h2>Project Description<a class="headerlink" href="#project-description" title="Permalink to this heading">#</a></h2>
+<p>This project cleans up interest rate data files with python, R, or Stata code.<br />
+The scripts are in the ./interest_rates/code folder, the original data is in the ./interest_rates/data/raw folder, and the output files are in the ./interest_rates/data folder.</p>
 </section>
-<section id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>MobaXterm</p></li>
-<li><p>FastX
-Installing instructions: <a class="reference external" href="https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1511">https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1511</a></p></li>
-</ul>
+<section id="follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-mamba-environment">
+<h2>Follow the <a class="reference internal" href="proj_sec10k.html"><span class="doc std std-doc">instructions for processing SEC 10-K forms project</span></a> to set up Mamba environment<a class="headerlink" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-mamba-environment" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="mac">
-<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Terminal ssh</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">your</span><span class="o">-</span><span class="n">netid</span><span class="nd">@klc0201</span><span class="o">.</span><span class="n">ci</span><span class="o">.</span><span class="n">northwestern</span><span class="o">.</span><span class="n">edu</span>
+<section id="run-the-python-script">
+<h2>Run the python script<a class="headerlink" href="#run-the-python-script" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">interest_rates</span>
+<span class="n">python</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>FastX
-Installing instructions: <a class="reference external" href="https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1511">https://services.northwestern.edu/TDClient/30/Portal/KB/ArticleDet?ID=1511</a></p></li>
+<li><p>Exercise:
+Remove the “# ” string at the beginning of line 53-54 and 56-57<br />
+Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+</ul>
+</section>
+<section id="run-the-r-script">
+<h2>Run the R script<a class="headerlink" href="#run-the-r-script" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">interest_rates</span>
+<span class="n">Rscript</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">R</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Exercise:
+Remove the “# ” string at the beginning of line 51, 52 and 55<br />
+Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+</ul>
+</section>
+<section id="run-the-stata-script">
+<h2>Run the Stata script<a class="headerlink" href="#run-the-stata-script" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">stata</span>
+<span class="n">cd</span> <span class="n">interest_rates</span>
+<span class="n">stata</span> <span class="o">-</span><span class="n">b</span> <span class="n">do</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">do</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Exercise:
+Remove the “* ” string at the beginning of line 35-38
+Rerun the code and check the first few lines of the “./data/ir2000_new.csv” output file. Did you notice what has changed?</p></li>
 </ul>
 </section>
 </section>
@@ -454,22 +464,13 @@ Installing instructions: <a class="reference external" href="https://services.no
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="proj_sec10k.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to KLC</p>
+        <p class="prev-next-title">Project: Clean Up SEC 10-K Forms</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="common_linux_commands.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Common Linux Commands</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -486,9 +487,11 @@ Installing instructions: <a class="reference external" href="https://services.no
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssh-address-for-klc-nodes">SSH address for KLC nodes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mac">Mac</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project Description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-the-instructions-for-processing-sec-10-k-forms-project-to-set-up-mamba-environment">Follow the <span class="xref myst">instructions for processing SEC 10-K forms project</span> to set up Mamba environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-python-script">Run the python script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-r-script">Run the R script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-stata-script">Run the Stata script</a></li>
 </ul>
   </nav></div>
 

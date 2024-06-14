@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'proj_sec10k';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Project: Process Interest Rate Files" href="proj_interestrate.html" />
     <link rel="prev" title="Running Jobs" href="run_jobs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="file_transfer.html">Transfer Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="run_jobs.html">Running Jobs</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Project: Clean Up SEC 10-K Forms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proj_interestrate.html">Project: Process Interest Rate Files</a></li>
 </ul>
 
     </div>
@@ -367,8 +369,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-this-repo">Download this repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-conda-environment-using-the-requirements-txt-file">Create a Conda environment using the requirements.txt file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mamba-environment-using-the-klc-fund-env-yml-file">Create a Mamba environment using the klc_fund_env.yml file</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-script">Run the script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-your-code-edits-with-git">Track your code edits with git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-script-and-check-out-output-files">Modify script and check out output files</a></li>
@@ -385,6 +388,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="project-clean-up-sec-10-k-forms">
 <h1>Project: Clean Up SEC 10-K Forms<a class="headerlink" href="#project-clean-up-sec-10-k-forms" title="Permalink to this heading">#</a></h1>
+<section id="project-description">
+<h2>Project description<a class="headerlink" href="#project-description" title="Permalink to this heading">#</a></h2>
+<p>We have various SEC forms downloaded at /kellogg/data/EDGAR on KLC. However, they are not in clean text format. Before doing research with these files, some removal of XML/HTML tags are needed. The python code in this project cleans up a 10-K text file and save a section of “Discussion and Analysis of Financial Condition” text.<br />
+The python code is in the ./sec_10k/code folder, the original data is in the ./sec_10k/data/raw folder, and the output files are in the ./sec_10k/data folder.</p>
+</section>
 <section id="download-this-repo">
 <h2>Download this repo<a class="headerlink" href="#download-this-repo" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">rs</span><span class="o">-</span><span class="n">kellogg</span><span class="o">/</span><span class="n">klc_fundamental</span>
@@ -392,19 +400,17 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<section id="create-a-conda-environment-using-the-requirements-txt-file">
-<h2>Create a Conda environment using the requirements.txt file<a class="headerlink" href="#create-a-conda-environment-using-the-requirements-txt-file" title="Permalink to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load miniconda module</span>
-<span class="n">module</span> <span class="n">purge</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">python</span><span class="o">-</span><span class="n">miniconda3</span><span class="o">/</span><span class="mf">4.12.0</span>
-<span class="n">module</span> <span class="nb">list</span>
+<section id="create-a-mamba-environment-using-the-klc-fund-env-yml-file">
+<h2>Create a Mamba environment using the klc_fund_env.yml file<a class="headerlink" href="#create-a-mamba-environment-using-the-klc-fund-env-yml-file" title="Permalink to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load mamba module</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">mamba</span><span class="o">/</span><span class="mf">23.1.0</span>
 
-<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">p</span> <span class="n">gemini_chat_env</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.10</span>
-<span class="c1"># this will print out the current directory</span>
-<span class="n">pwd</span>
-<span class="c1"># copy the previous output and use as &quot;current_directory_output&quot; below</span>
-<span class="n">source</span> <span class="n">activate</span> <span class="n">current_directory_output</span><span class="o">/</span><span class="n">gemini_chat_env</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="c1">########################################################</span>
+<span class="c1"># Run this line of creating environment only once</span>
+<span class="n">mamba</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">klc_fund_env</span> <span class="o">-</span><span class="n">f</span> <span class="n">klc_fund_env</span><span class="o">.</span><span class="n">yml</span> 
+<span class="c1">########################################################</span>
+
+<span class="n">source</span> <span class="n">activate</span> <span class="o">./</span><span class="n">klc_fund_env</span>
 </pre></div>
 </div>
 </section>
@@ -412,7 +418,7 @@ document.write(`
 <h2>Run the script<a class="headerlink" href="#run-the-script" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sec_10k</span>
 <span class="c1"># Run the python script</span>
-<span class="n">python</span> <span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="o">./</span><span class="n">code</span><span class="o">/</span><span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 </section>
@@ -436,29 +442,30 @@ document.write(`
 </section>
 <section id="modify-script-and-check-out-output-files">
 <h2>Modify script and check out output files<a class="headerlink" href="#modify-script-and-check-out-output-files" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Check what regular expression in line 31 of proc_sec10k.py do</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy current output to a new file</span>
+<span class="n">cp</span> <span class="n">data</span><span class="o">/</span><span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span> <span class="n">data</span><span class="o">/</span><span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Comment out line 31 of proc_sec10k.py by adding a “#” symbol, # cleaned = re.sub(r”\n\s{1,}\n”, “\n”, cleaned)</p></li>
+<li><p>Check what regular expression in line 31 of ./code/proc_sec10k.py do</p></li>
+<li><p>Use nano editor to open file and comment out line 31 of code/proc_sec10k.py by adding a “#” symbol</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">./</span><span class="n">code</span><span class="o">/</span><span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
+<span class="c1"># Go to line 31 and edit</span>
+<span class="c1"># # cleaned = re.sub(r&quot;\n\s{1,}\n&quot;, &quot;\n&quot;, cleaned)</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Use editor to open file to check</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">./</span><span class="n">code</span><span class="o">/</span><span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Try the following commands</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span>
-<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;diff&quot; command prints out difference between text files</span>
+<span class="c1"># &quot;head -10&quot; command prints out the first 10 lines of output</span>
+<span class="n">diff</span> <span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">.</span><span class="n">orig</span> <span class="o">|</span> <span class="n">head</span> <span class="o">-</span><span class="mi">10</span>
+<span class="c1"># &quot;wc -l&quot; command prints out line counts of text files</span>
+<span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="mi">1716324_2_0001477932</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">002626</span><span class="n">_cleaned</span><span class="o">.</span><span class="n">txt</span><span class="o">*</span>
 </pre></div>
 </div>
 </section>
@@ -503,6 +510,15 @@ document.write(`
         <p class="prev-next-title">Running Jobs</p>
       </div>
     </a>
+    <a class="right-next"
+       href="proj_interestrate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Project: Process Interest Rate Files</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -518,8 +534,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-description">Project description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-this-repo">Download this repo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-conda-environment-using-the-requirements-txt-file">Create a Conda environment using the requirements.txt file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-mamba-environment-using-the-klc-fund-env-yml-file">Create a Mamba environment using the klc_fund_env.yml file</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-script">Run the script</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#track-your-code-edits-with-git">Track your code edits with git</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modify-script-and-check-out-output-files">Modify script and check out output files</a></li>
