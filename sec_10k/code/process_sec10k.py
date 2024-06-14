@@ -51,8 +51,8 @@ def extract_mda(text):
 # ------------------------------------------------------------------------------
 def main(
     # input_dir: Path = Path("/kellogg/data/EDGAR/10-K/2023"),
-    input_dir: Path = Path("./forms_10-K"),
-    output_file: Path = Path("./annual_report_output.csv"),
+    input_dir: Path = Path("./data/raw"),
+    output_file: Path = Path("./data/annual_report_output.csv"),
     num_files: int = 5,
 ):
     # validate input parameters
@@ -71,7 +71,8 @@ def main(
         print(f"loading: {f.name}")
 
         clean_text = clean_html(f.read_text())
-        with open(f.stem + "_cleaned.txt", "w") as f_out:
+        clean_text_file = output_file.parent / (f.stem + "_cleaned.txt")
+        with open(clean_text_file, "w") as f_out:
             f_out.write(clean_text)
 
         mda_text = extract_mda(clean_text)
