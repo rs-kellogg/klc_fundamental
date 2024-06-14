@@ -4,9 +4,6 @@
 # Clear Workspace
 rm(list=ls())
 
-# Set Working Directory
-# setwd("~/workshop_2022/Session4_Automate/interest_rates/data/raw")
-
 library(readr)
 library(dplyr)
 library(stringr)
@@ -17,20 +14,16 @@ clean_form2000 <- function(filename, output_file) {
   
   # Change one Value - The interest rate in April 2021 is off by a decimal
   print(df_ir[11, 4])
-  # df_ir$Prime_Rate <- as.numeric(df_ir$Prime_Rate)
   df_ir[11, 4] <- "7.8"
   print(df_ir[11, 4])
   
   # Remove an Extra Header Row
-  print("===2")
   print(df_ir[7, ])
   df_ir <- df_ir[-7, ]
   print(df_ir[7, ])
   
   # Change NDs to NAs
-  print("===3")
   print(df_ir[23, 5])
-  # df_ir$Treasury_Rate_3_Month <- as.numeric(df_ir$Treasury_Rate_3_Month)
   df_ir[23, 5] <- ""
   print(df_ir[23, 5])
   
@@ -71,15 +64,16 @@ clean_form <- function(filename, output_file) {
 }
 
 # Example usage
-workdir <- "../data/raw"
+workdir <- "./data/raw"
+outdir <- "./data"
 filename <- "/ir2000.csv"
 file <- paste0(workdir, filename)
-output_file <- paste0(".", gsub("[.]csv", "_new.csv", filename))
+output_file <- paste0(outdir, gsub("[.]csv", "_new.csv", filename))
 clean_form2000(file, output_file)
 
 file_list <- list.files(workdir, pattern = "*.csv", full.names = TRUE)
 file_list <- sort(file_list)
-output_file <- "./ir_all.csv"
+output_file <- "./data/ir_all.csv"
 for (file in file_list) {
   clean_form(file, output_file)
 }

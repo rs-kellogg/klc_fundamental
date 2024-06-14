@@ -67,15 +67,16 @@ def clean_form(filename, output_file):
 
 
 if __name__ == "__main__":
-    workdir = Path("../data/raw")
+    workdir = Path("./data/raw")
+    outdir = Path("./data")
     
     file = workdir / "ir2000.csv"
-    output_file = Path("./") / (file.stem + "_new.csv")
+    output_file = outdir / (file.stem + "_new.csv")
     clean_form2000(file, output_file)
 
     file_list = list(workdir.glob("*.csv"))
     file_list.sort()
-    output_file = Path("./") / "ir_all.csv"
+    output_file = outdir / "ir_all.csv"
     for file in file_list:
         clean_form(file, output_file)
 
