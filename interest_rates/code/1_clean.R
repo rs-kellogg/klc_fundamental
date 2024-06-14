@@ -47,12 +47,12 @@ clean_form <- function(filename, output_file) {
   # Change NDs to NAs
   df_ir$Treasury_Rate_3_Month[df_ir$Treasury_Rate_3_Month == "ND"] <- NA
   
-  # Split the Month and Year into separate columns
-  df_ir$Year <- str_extract(df_ir$Month, "\\d{4}")
-  df_ir$Month <- str_match(df_ir$Month, "-(\\d{2})")[,2]
+  # # Split the Month and Year into separate columns
+  # df_ir$Year <- str_extract(df_ir$Month, "\\d{4}")
+  # df_ir$Month <- str_match(df_ir$Month, "-(\\d{2})")[,2]
   
-  # Reorder column names to start with Year and Month
-  df_ir <- df_ir[, c("Year", setdiff(names(df_ir), "Year"))]
+  # # Reorder column names to start with Year and Month
+  # df_ir <- df_ir[, c("Year", setdiff(names(df_ir), "Year"))]
   
   # Save Results to another file
   if (file.exists(output_file)) {

@@ -49,14 +49,12 @@ def clean_form(filename, output_file):
     # Change NDs to NAs
     df_ir.loc[df_ir['Treasury_Rate_3_Month'] == "ND", 'Treasury_Rate_3_Month'] = pd.NA
 
-    # Split the Month and Year into separate columns
-    df_ir['Year'] = df_ir['Month'].str.split('-', expand=True)[0]
-    df_ir['Month'] = df_ir['Month'].str.split('-', expand=True)[1]
-    # Reorder column names to start with Year and Month
-    new_col_order = ['Year'] + df_ir.columns[:-1].tolist()
-    df_ir = df_ir[new_col_order]
-
-    # df_ir = df_ir.sort_values(by = ['Year', 'Month'], ascending = [True, True])
+    # # Split the Month and Year into separate columns
+    # df_ir['Year'] = df_ir['Month'].str.split('-', expand=True)[0]
+    # df_ir['Month'] = df_ir['Month'].str.split('-', expand=True)[1]
+    # # Reorder column names to start with Year and Month
+    # new_col_order = ['Year'] + df_ir.columns[:-1].tolist()
+    # df_ir = df_ir[new_col_order]
 
     # Save Results to another file
     if output_file.exists():
