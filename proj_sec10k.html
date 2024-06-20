@@ -406,7 +406,7 @@ The python code is in the ./sec_10k/code folder, the original data is in the ./s
 <span class="n">module</span> <span class="n">load</span> <span class="n">mamba</span><span class="o">/</span><span class="mf">23.1.0</span>
 
 <span class="c1">########################################################</span>
-<span class="c1"># Run this line of creating environment only once</span>
+<span class="c1"># Run this line once to create environment </span>
 <span class="n">mamba</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">p</span> <span class="o">./</span><span class="n">klc_fund_env</span> <span class="o">-</span><span class="n">f</span> <span class="n">klc_fund_env</span><span class="o">.</span><span class="n">yml</span> 
 <span class="c1">########################################################</span>
 
@@ -448,11 +448,13 @@ The python code is in the ./sec_10k/code folder, the original data is in the ./s
 </div>
 <ul class="simple">
 <li><p>Check what regular expression in line 31 of ./code/proc_sec10k.py do</p></li>
-<li><p>Use nano editor to open file and comment out line 31 of code/proc_sec10k.py by adding a “#” symbol</p></li>
+<li><p>Use nano editor to open file and remove “# ” at the beginning of line 31 of code/proc_sec10k.py</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">./</span><span class="n">code</span><span class="o">/</span><span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>
 <span class="c1"># Go to line 31 and edit</span>
-<span class="c1"># # cleaned = re.sub(r&quot;\n\s{1,}\n&quot;, &quot;\n&quot;, cleaned)</span>
+    <span class="c1"># cleaned = re.sub(r&quot;\n\s{1,}\n&quot;, &quot;\n&quot;, cleaned)</span>
+<span class="c1"># To</span>
+    <span class="n">cleaned</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\n\s{1,}\n&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cleaned</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">./</span><span class="n">code</span><span class="o">/</span><span class="n">proc_sec10k</span><span class="o">.</span><span class="n">py</span>

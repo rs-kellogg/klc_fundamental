@@ -17,7 +17,7 @@ cd klc_fundamental
 module load mamba/23.1.0
 
 ########################################################
-# Run this line of creating environment only once
+# Run this line once to create environment 
 mamba env create -p ./klc_fund_env -f klc_fund_env.yml 
 ########################################################
 
@@ -52,11 +52,13 @@ git log
 cp data/1716324_2_0001477932-23-002626_cleaned.txt data/1716324_2_0001477932-23-002626_cleaned.txt.orig
 ```
 - Check what regular expression in line 31 of ./code/proc_sec10k.py do
-- Use nano editor to open file and comment out line 31 of code/proc_sec10k.py by adding a "#" symbol  
+- Use nano editor to open file and remove "# " at the beginning of line 31 of code/proc_sec10k.py 
 ```
 nano ./code/proc_sec10k.py
 # Go to line 31 and edit
-# # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
+    # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
+# To
+    cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
 ```
 ```
 python ./code/proc_sec10k.py
