@@ -8,16 +8,17 @@ library(readr)
 library(dplyr)
 library(stringr)
 
+# Individualzied fixes
 clean_form2000 <- function(filename, output_file) {
   # Read in one file
   df_ir <- read_csv(filename)
   
-  # Change one Value - The interest rate in April 2021 is off by a decimal
+  # Change one value - the interest rate in April 2021 is off by a decimal
   print(df_ir[11, 4])
   df_ir[11, 4] <- "7.8"
   print(df_ir[11, 4])
   
-  # Remove an Extra Header Row
+  # Remove an extra header row
   print(df_ir[7, ])
   df_ir <- df_ir[-7, ]
   print(df_ir[7, ])
@@ -27,20 +28,21 @@ clean_form2000 <- function(filename, output_file) {
   df_ir[23, 5] <- ""
   print(df_ir[23, 5])
   
-  # Save Results to another file
+  # Save results to another file
   write_csv(df_ir, output_file)
   
 }
 
 
+# Automated fixes to files
 clean_form <- function(filename, output_file) {
-  # Read in one File
+  # Read in one file
   df_ir <- read_csv(filename)
   
-  # Remove an Extra Header Row
+  # Remove any extra header row
   df_ir <- df_ir[df_ir$Month != 'Month', ]
   
-  # Change one Value - The interest rate in April 2021 is off by a decimal
+  # Change values in the Prime_Rate column - in the case that the interest rate is off by a decimal
   df_ir$Prime_Rate <- as.numeric(df_ir$Prime_Rate)
   df_ir$Prime_Rate[df_ir$Prime_Rate < 1] <- df_ir$Prime_Rate[df_ir$Prime_Rate < 1] * 10
   
@@ -54,7 +56,7 @@ clean_form <- function(filename, output_file) {
   # # Reorder column names to start with Year and Month
   # df_ir <- df_ir[, c("Year", setdiff(names(df_ir), "Year"))]
   
-  # Save Results to another file
+  # Save results to another file
   if (file.exists(output_file)) {
     write_csv(df_ir, output_file, na = "", append = TRUE)
   } else {

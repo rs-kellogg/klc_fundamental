@@ -10,4 +10,3 @@ dependencies:
   # python packages
   - python=3.10.0
   - pandas
-  - python-dotenv

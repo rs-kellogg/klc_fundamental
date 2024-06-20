@@ -16,7 +16,7 @@ global dirout = "./data"
 insheet using "$dirin/ir2000.csv", comma clear
 
 foreach var of varlist * {
-   rename `var' `=`var'[1]'
+  rename `var' `=`var'[1]'
 }
 drop in 1 
 destring, replace 
@@ -29,7 +29,7 @@ drop if Month == "Month"
 destring Prime_Rate, replace
 replace Prime_Rate = Prime_Rate * 10 if (Prime_Rate < 1)
 
-* replace NDs with NAs
+* Replace NDs with NAs
 replace Treasury_Rate_3_Month = "" if (Treasury_Rate_3_Month == "ND")
 
 * gen Year = regexs(0) if(regexm(Month, "^[0-9][0-9][0-9][0-9]"))
@@ -37,7 +37,6 @@ replace Treasury_Rate_3_Month = "" if (Treasury_Rate_3_Month == "ND")
 * replace Month = subinstr(Month,"-", "", .)
 * order Year, before(Month)
 
-* save results
+* Save results
 * save "$dirout/ir2000_new.dta"
 export delimited "$dirout/ir2000_new.csv"
-
