@@ -63,7 +63,9 @@ clean_form <- function(filename, output_file) {
   
 }
 
+###################################
 # Example usage
+###################################
 workdir <- "./data/raw"
 outdir <- "./data"
 filename <- "/ir2000.csv"
