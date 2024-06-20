@@ -22,6 +22,9 @@ mamba env create -p ./klc_fund_env -f klc_fund_env.yml
 ########################################################
 
 source activate ./klc_fund_env
+
+# Optional: to export an existing environment to .yml file
+mamba env export --no-builds >> klc_fund_env_export.yml
 ```
 
 ## Run the script
