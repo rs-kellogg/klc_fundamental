@@ -1,5 +1,5 @@
 ###################################
-### Automate Cleaning a Dataset ###
+### Clean up a Dataset          ###
 ###################################
 # Clear Workspace
 rm(list=ls())
@@ -8,33 +8,8 @@ library(readr)
 library(dplyr)
 library(stringr)
 
-# Individualzied fixes
-clean_form2000 <- function(filename, output_file) {
-  # Read in one file
-  df_ir <- read_csv(filename)
-  
-  # Change one value - the interest rate in April 2021 is off by a decimal
-  print(df_ir[11, 4])
-  df_ir[11, 4] <- "7.8"
-  print(df_ir[11, 4])
-  
-  # Remove an extra header row
-  print(df_ir[7, ])
-  df_ir <- df_ir[-7, ]
-  print(df_ir[7, ])
-  
-  # Change NDs to NAs
-  print(df_ir[23, 5])
-  df_ir[23, 5] <- ""
-  print(df_ir[23, 5])
-  
-  # Save results to another file
-  write_csv(df_ir, output_file)
-  
-}
 
-
-# Automated fixes to files
+# Write a funciton to apply fixes to data files
 clean_form <- function(filename, output_file) {
   # Read in one file
   df_ir <- read_csv(filename)
@@ -70,10 +45,6 @@ clean_form <- function(filename, output_file) {
 ###################################
 workdir <- "./data/raw"
 outdir <- "./data"
-filename <- "/ir2000.csv"
-file <- paste0(workdir, filename)
-output_file <- paste0(outdir, gsub("[.]csv", "_new.csv", filename))
-clean_form2000(file, output_file)
 
 file_list <- list.files(workdir, pattern = "*.csv", full.names = TRUE)
 file_list <- sort(file_list)

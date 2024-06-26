@@ -1,5 +1,5 @@
 *************
-* Automate Cleaning a Dataset
+* Clean up a Dataset  
 *************
 
 clear all

@@ -1,5 +1,5 @@
 ###################################
-### Automate Cleaning a Dataset ###
+### Clean up a Dataset          ###
 ###################################
 
 #load libraries
@@ -7,33 +7,7 @@ import pandas as pd
 from pathlib import Path
 
 
-# Individualzied fixes
-def clean_form2000(filename, output_file):
-    # Read in one file
-    df_ir = pd.read_csv(filename, encoding='utf8')
-
-    # Change one Value - the interest rate in April 2021 is off by a decimal
-    print(df_ir.iloc[10,3])
-    df_ir.iloc[10,3] = 7.8
-    print(df_ir.iloc[10,3])
-
-    # Remove an extra header row
-    print(df_ir.iloc[6,])
-    df_ir = df_ir.drop(index=6)
-    print(df_ir.iloc[6,])
-
-    # Change NDs to NAs
-    print(df_ir.iloc[22,4])
-    df_ir.iloc[22,4] = pd.NA
-    print(df_ir.iloc[22,4])
-
-    # Save results to another file
-    df_ir.to_csv(output_file, index=False)
-
-    return
-
-
-# Automated fixes to files
+# Write a funciton to apply fixes to data files
 def clean_form(filename, output_file):
     # Read in one file
     df_ir = pd.read_csv(filename, encoding='utf8')
@@ -68,10 +42,6 @@ if __name__ == "__main__":
     workdir = Path("./data/raw")
     outdir = Path("./data")
     
-    file = workdir / "ir2000.csv"
-    output_file = outdir / (file.stem + "_new.csv")
-    clean_form2000(file, output_file)
-
     file_list = list(workdir.glob("*.csv"))
     file_list.sort()
     output_file = outdir / "ir_all.csv"
