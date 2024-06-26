@@ -66,7 +66,8 @@ nano ./code/proc_sec10k.py
 ```
 python ./code/proc_sec10k.py
 ```
-- Try the following commands
+- Update your local git repo and make a commit
+- Execute the following commands
 ```
 # "diff" command prints out difference between text files
 # "head -10" command prints out the first 10 lines of output

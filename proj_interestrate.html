@@ -397,43 +397,54 @@ The scripts are in the ./interest_rates/code folder, the original data is in the
 <section id="run-the-python-script">
 <h2>Run the python script<a class="headerlink" href="#run-the-python-script" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">interest_rates</span>
-<span class="n">python</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">code</span><span class="o">/</span><span class="n">proc_ir</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Exercise:<br />
-Remove the “# ” string at the beginning of line 52-53 and 56-57<br />
-Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+<li><p>Exercise:</p></li>
 </ul>
+<ol class="arabic simple">
+<li><p>Remove the “# ” string at the beginning of line 26-27 and 30-31</p></li>
+<li><p>Update your local git repo and make a commit</p></li>
+<li><p>Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+</ol>
 </section>
 <section id="run-the-r-script">
 <h2>Run the R script<a class="headerlink" href="#run-the-r-script" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">interest_rates</span>
-<span class="n">Rscript</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">R</span>
+<span class="n">Rscript</span> <span class="n">code</span><span class="o">/</span><span class="n">proc_ir</span><span class="o">.</span><span class="n">R</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Exercise:<br />
-Remove the “# ” string at the beginning of line 53, 54 and 57<br />
-Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+<li><p>Exercise:</p></li>
 </ul>
+<ol class="arabic simple">
+<li><p>Remove the “# ” string at the beginning of line 28, 29 and 32</p></li>
+<li><p>Update your local git repo and make a commit</p></li>
+<li><p>Rerun the code and check the first few lines of the “./data/ir_all.csv” output file. Did you notice what has changed?</p></li>
+</ol>
 </section>
 <section id="run-the-stata-script">
 <h2>Run the Stata script<a class="headerlink" href="#run-the-stata-script" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">stata</span>
 <span class="n">cd</span> <span class="n">interest_rates</span>
-<span class="n">stata</span> <span class="o">-</span><span class="n">b</span> <span class="n">do</span> <span class="n">code</span><span class="o">/</span><span class="mi">1</span><span class="n">_clean</span><span class="o">.</span><span class="n">do</span>
+<span class="n">stata</span> <span class="o">-</span><span class="n">b</span> <span class="n">do</span> <span class="n">code</span><span class="o">/</span><span class="n">proc_ir</span><span class="o">.</span><span class="n">do</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Exercise:<br />
-Remove the “* ” string at the beginning of line 35-38
-Move the previous output file</p></li>
+<li><p>Exercise:</p></li>
 </ul>
+<ol class="arabic simple">
+<li><p>Remove the “* ” string at the beginning of line 35-38</p></li>
+<li><p>Update your local git repo and make a commit</p></li>
+<li><p>Move the previous output file</p></li>
+</ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">ir2000_new</span><span class="o">.</span><span class="n">csv</span> <span class="o">./</span><span class="n">data</span><span class="o">/</span><span class="n">ir2000_new</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">orig</span>
 </pre></div>
 </div>
-<p>Rerun the code and check the first few lines of the “./data/ir2000_new.csv” output file. Did you notice what has changed?</p>
+<ol class="arabic simple" start="4">
+<li><p>Rerun the code and check the first few lines of the “./data/ir2000_new.csv” output file. Did you notice what has changed?</p></li>
+</ol>
 </section>
 </section>
 
