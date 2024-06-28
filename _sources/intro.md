@@ -1,5 +1,13 @@
 # Introduction to KLC 
 
+## Why use KLC?  
+KLC servers
+- Have large amounts of memory, storage, and CPU available
+- Can tackle much bigger computational problems and work with much larger data files
+- Are a shared system, enabling highly collaborative and reproducible work
+- Offer the same, vast library of scientific computing software that Northwestern Quest uses
+- Offer straightforward ways to schedule jobs to run at certain times and to script sequences of tasks, saving efforts and helping with reproducibility
+
 ## Official website:
 https://www.kellogg.northwestern.edu/academics-research/research-support/computing/kellogg-linux-cluster.aspx
 	
