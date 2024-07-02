@@ -16,11 +16,11 @@ micromamba activate ~/envs/klc_fund_env
 cd interest_rates
 python code/proc_ir.py
 ```
-Check the first 11 lines of the "./data/ir_all.csv" output file vs the "./data/raw/ir2000.csv" file. Did you notice what has changed?
+Check the first 11 lines of the "./data/ir_all.csv" output file vs the "./data/raw/ir2000.csv" file. Do you notice what has changed?
 - Exercise:   
 1. Remove the "# " string at the beginning of line 26-27 and 30-31  
 2. Update your local git repo and make a commit (see common git commands [here](https://rs-kellogg.github.io/klc_fundamental/common_git_commands.html))
-3. Rerun the code and check the first 3 lines of the "./data/ir_all.csv" output file. Did you notice what has changed?
+3. Rerun the code and check the first 3 lines of the "./data/ir_all.csv" output file. Do you notice what has changed?
 
 
 ## Run the R script
@@ -28,11 +28,11 @@ Check the first 11 lines of the "./data/ir_all.csv" output file vs the "./data/r
 cd interest_rates
 Rscript code/proc_ir.R
 ```
-Check the first 11 lines of the "./data/ir_all.csv" output file vs the "./data/raw/ir2000.csv" file. Did you notice what has changed?
+Check the first 11 lines of the "./data/ir_all.csv" output file vs the "./data/raw/ir2000.csv" file. Do you notice what has changed?
 - Exercise:   
 1. Remove the "# " string at the beginning of line 28, 29 and 32  
 2. Update your local git repo and make a commit (see common git commands [here](https://rs-kellogg.github.io/klc_fundamental/common_git_commands.html))
-3. Rerun the code and check the first 3 lines of the "./data/ir_all.csv" output file. Did you notice what has changed?
+3. Rerun the code and check the first 3 lines of the "./data/ir_all.csv" output file. Do you notice what has changed?
 
 
 ## Run the Stata script
@@ -41,7 +41,7 @@ module load stata
 cd interest_rates
 stata -b do code/proc_ir.do
 ```
-Check the first 11 lines of the "./data/ir2000_new.csv" output file vs the "./data/raw/ir2000.csv" file. Did you notice what has changed?  
+Check the first 11 lines of the "./data/ir2000_new.csv" output file vs the "./data/raw/ir2000.csv" file. Do you notice what has changed?  
 - Exercise:   
 1. Remove the "* " string at the beginning of line 35-38
 2. Update your local git repo and make a commit (see common git commands [here](https://rs-kellogg.github.io/klc_fundamental/common_git_commands.html))
@@ -49,4 +49,4 @@ Check the first 11 lines of the "./data/ir2000_new.csv" output file vs the "./da
 ```
 mv ./data/ir2000_new.csv ./data/ir2000_new.csv.orig
 ```
-4. Rerun the code and check the first 3 lines of the "./data/ir2000_new.csv" output file. Did you notice what has changed?
+4. Rerun the code and check the first 3 lines of the "./data/ir2000_new.csv" output file. Do you notice what has changed?
