@@ -13,30 +13,47 @@ cd klc_fundamental
 
 ## Create a Mamba environment using the klc_fund_env.yml file
 ```
-# Load mamba module
-module load mamba/23.1.0
+# Load micromamba module
+module load micromamba
 
 ########################################################
 # Run this line once to create environment 
-mamba env create -p ./klc_fund_env -f klc_fund_env.yml 
+micromamba create -p ~/envs/klc_fund_env -f klc_fund_env.yml 
 ########################################################
 
-source activate ./klc_fund_env
+micromamba activate ~/envs/klc_fund_env
 
 # Optional: to export an existing environment to .yml file
-mamba env export --no-builds >> klc_fund_env_export.yml
+micromamba env export >> klc_fund_env_export.yml
 ```
 
 ## Run the script
 ```
 cd sec_10k
 # Run the python script
-python ./code/proc_sec10k.py
+python ./code/process_sec10k.py
 ```
 
-## Track your code edits with git
-- Basic git commands as you update your script
+## Modify script and check out output files
 ```
+# Copy current output to a new file
+cp data/1716324_2_0001477932-23-002626_cleaned.txt data/1716324_2_0001477932-23-002626_cleaned.txt.orig
+```
+- Check what regular expression in line 31 of ./code/process_sec10k.py do
+- Use nano editor to open file and remove "# " at the beginning of line 31 of code/process_sec10k.py 
+```
+nano ./code/process_sec10k.py
+# Go to line 31 and edit
+    # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
+# To
+    cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
+```
+```
+python ./code/process_sec10k.py
+```
+- Update your local git repo and make a commit (see common git commands [here](https://rs-kellogg.github.io/klc_fundamental/common_git_commands.html))
+```
+# Basic git commands
 # Add new file for git tracking
 git add new file
 # Adds all changes to existing files to the Staging Area
@@ -48,30 +65,11 @@ git status
 # Check log of commit
 git log
 ```
-
-## Modify script and check out output files
-```
-# Copy current output to a new file
-cp data/1716324_2_0001477932-23-002626_cleaned.txt data/1716324_2_0001477932-23-002626_cleaned.txt.orig
-```
-- Check what regular expression in line 31 of ./code/proc_sec10k.py do
-- Use nano editor to open file and remove "# " at the beginning of line 31 of code/proc_sec10k.py 
-```
-nano ./code/proc_sec10k.py
-# Go to line 31 and edit
-    # cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
-# To
-    cleaned = re.sub(r"\n\s{1,}\n", "\n", cleaned)
-```
-```
-python ./code/proc_sec10k.py
-```
-- Update your local git repo and make a commit
 - Execute the following commands
 ```
 # "diff" command prints out difference between text files
 # "head -10" command prints out the first 10 lines of output
-diff 1716324_2_0001477932-23-002626_cleaned.txt ./data/1716324_2_0001477932-23-002626_cleaned.txt.orig | head -10
+diff ./data/1716324_2_0001477932-23-002626_cleaned.txt ./data/1716324_2_0001477932-23-002626_cleaned.txt.orig | head -10
 # "wc -l" command prints out line counts of text files
 wc -l ./data/1716324_2_0001477932-23-002626_cleaned.txt*
 ```
